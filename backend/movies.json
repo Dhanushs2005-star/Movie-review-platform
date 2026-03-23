@@ -1,0 +1,30 @@
+[
+  {
+    "_id": "1774288175888",
+    "title": "The Shawshank Redemption (Updated)",
+    "year": 1994,
+    "createdAt": "2026-03-23T17:49:35.888Z"
+  },
+  {
+    "_id": "1774289146293",
+    "title": "Inception",
+    "year": 2010,
+    "director": "Christopher Nolan",
+    "genre": [
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "createdAt": "2026-03-23T18:05:46.293Z"
+  },
+  {
+    "_id": "1774289171870",
+    "title": "Interstellar",
+    "year": 2014,
+    "director": "Christopher Nolan",
+    "genre": [
+      "Sci-Fi",
+      "Drama"
+    ],
+    "createdAt": "2026-03-23T18:06:11.870Z"
+  }
+]
