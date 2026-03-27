@@ -1,0 +1,55 @@
+require('dotenv').config();
+const express = require('express');
+const mongoose = require('mongoose');
+
+const app = express();
+
+// Middleware
+app.use(express.json());
+
+// Connect to MongoDB
+mongoose.connect(process.env.MONGODB_URI)
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.log('MongoDB error:', err));
+
+// Routes will go here
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});
+
+// Movie Schema
+const movieSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true
+  },
+  year: {
+    type: Number,
+    required: true
+  },
+  director: {
+    type: String
+  },
+  genre: {
+    type: [String],
+    default: []
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
+});
+
+const Movie = mongoose.model('Movie', movieSchema);
+
+// GET /api/movies - Get all movies from database
+app.get('/api/movies', async (req, res) => {
+  try {
+    const movies = await Movie.find();
+    res.json(movies);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
